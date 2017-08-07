@@ -10,17 +10,18 @@ For below image this doesn't work, unfortunately, because GitHub downloads the i
 
 ![Live countdown to new year](http://only-media.nl/gif/gif.php)
 
-##Note
+## Note
 I received some questions about Gmail so lets describe this mail client a bit more in detail. This script is successfully tested with Gmail, at the moment of writing, which is *2015-12-23*. Gmail loads the images via their own proxy, so not directly from source. There are different opinions about the proxy, but it seems that Google's proxy protects your private data and only informs the sender that the email has been opened. There are speculations that Gmail caches the images, but still respect the cache headers, so you can instruct Gmail how often to refresh the data. I personally had no trouble with the cache whatsoever! I've tested this countdown image numerous times in Gmail and of course you can test it yourself as well. Just to be sure I've added some cache disabling headers in the examples.
 
-##Composer Installation
+## Composer Installation
 1. Get Composer
 2. Require php-gif with `php composer.phar require erikvdven/php-gif`
 3. Add the following to your application's main PHP file: `require 'vendor/autoload.php';`
 
-##Getting Started
+## Getting Started
 
 Create a PHP file and add these headers at the beginning of the file:
+
 ```php
 // Caching disable headers
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
@@ -33,6 +34,7 @@ header ('Content-type:image/gif');
 // Include the GIFGenerator class
 use ErikvdVen\Gif\GIFGenerator;
 ```
+
 On the next lines you can create a GIF image by first initializing the GIFGenerator object and creating an array with all the image frames:
 
 ```php
@@ -48,7 +50,7 @@ $imageFrames = array(
 			'text' => array(
 				array(
 					'text' => 'Hello GIF frame 1',
-					'font-color' => '#000',
+					'fonts-color' => '#000',
 					'x-position' => 140,
 					'y-position' => 138
 				)
@@ -59,11 +61,12 @@ $imageFrames = array(
 );
 ```
 Finally you generate the image and `echo` the results on the screen: 
+
 ```php
 echo $gif->generate($imageFrames);
 ```
 
-##Example
+## Example
 
 A more complete example. You could copy/paste below code to a file and execute it in the browser to view a more complete result. As you can see it's not required to use text in your GIF image and you can add as much text per frame, and as much frames per GIF image as you like.
 
@@ -92,10 +95,10 @@ $imageFrames = array(
 			'text' => array(
 				array(
 					'text' => 'Hello GIF frame 1',
-					'font' => './fonts/Lato-Light.ttf',
-					'font-size' => 30,
+					'fonts' => './fonts/Lato-Light.ttf',
+					'fonts-size' => 30,
 					'angle' => 0,
-					'font-color' => '#000',
+					'fonts-color' => '#000',
 					'x-position' => 140,
 					'y-position' => 138
 				)
@@ -107,19 +110,19 @@ $imageFrames = array(
 			'text' => array(
 				array(
 					'text' => 'Hello GIF frame 2',
-					'font' => './fonts/Lato-Light.ttf',
-					'font-size' => 15,
+					'fonts' => './fonts/Lato-Light.ttf',
+					'fonts-size' => 15,
 					'angle' => 0,
-					'font-color' => '#000',
+					'fonts-color' => '#000',
 					'x-position' => 140,
 					'y-position' => 138
 				),
 				array(
 					'text' => 'Hello GIF frame 2',
-					'font' => './fonts/Lato-Light.ttf',
-					'font-size' => 15,
+					'fonts' => './fonts/Lato-Light.ttf',
+					'fonts-size' => 15,
 					'angle' => 0,
-					'font-color' => '#000',
+					'fonts-color' => '#000',
 					'x-position' => 140,
 					'y-position' => 108
 				)
@@ -137,10 +140,10 @@ echo $gif->generate($imageFrames);
 ?>
 ```
 
-##License & Credits
+## License & Credits
 
 This software is published under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
 
-######GIFEncoder
+###### GIFEncoder
 
 GIFEncoder.class.php contains minor adaptations from the GIFEncoder PHP class by [László Zsidi](http://gifs.hu).
